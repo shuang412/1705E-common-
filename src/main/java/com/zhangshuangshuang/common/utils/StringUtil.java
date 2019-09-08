@@ -84,5 +84,51 @@ public class StringUtil {
 			
 			return firtname +lastname ;
 		}
+		// 方法5：正则验证手机号
+		public static boolean isPhoneNumber(String number) {
+			if(hasText(number)) {
+				return false;
+			}
+			String telRegex = "[1][3578]\\d{9}";
+			return number.matches(telRegex);
+		}
+		// 方法6：正则验证邮箱
+		public static boolean isEmail(String email) {
+			if(hasText(email)) {
+				return false;
+			}
+			String reg="[A-z]+[A-z0-9_-]*\\@[A-z0-9]+\\.[A-z]+";
+			return email.matches(reg);
+		}
+//		方法7：传来的字符转成 html 文本，遇到“\n”符时，要用<p></p>将这一段字符包起来。 
+		public static String toHtml(String src) {
+			
+			String str = src.replaceAll(System.getProperty("line.separator"), "|")	;
+			String[] split = str.split("\\|");
+			String newStr="";
+			for (String string2 : split) {
+				newStr+="<p>"+string2+"</p>";
+			}
+			return newStr;
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 }
