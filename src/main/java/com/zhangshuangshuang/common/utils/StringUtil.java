@@ -101,34 +101,20 @@ public class StringUtil {
 			return email.matches(reg);
 		}
 //		方法7：传来的字符转成 html 文本，遇到“\n”符时，要用<p></p>将这一段字符包起来。 
-		public static String toHtml(String src) {
-			
-			String str = src.replaceAll(System.getProperty("line.separator"), "|")	;
+		public static String toHtml(String text){
+			String str = text.replace(System.getProperty("line.separator"), "|");
 			String[] split = str.split("\\|");
-			String newStr="";
-			for (String string2 : split) {
-				newStr+="<p>"+string2+"</p>";
+			String newstr = "";
+			for (String string : split) {
+				newstr+="<p>"+string+"</p>";
 			}
-			return newStr;
-			
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			String[] split2 = str.split("\r");
+			for (String string : split2) {
+				newstr+=string+"<br/>";
+			}
+			return newstr;
 
+
+			}
+		
 }
